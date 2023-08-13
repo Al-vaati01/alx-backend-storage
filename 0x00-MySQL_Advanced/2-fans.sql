@@ -3,10 +3,10 @@
 
 SELECT
     b.origin AS origin,
-    COUNT(*) AS nb_fans
+    COUNT(DISTINCT f.fan_id) AS nb_fans
 FROM
     bands AS b
-JOIN
+LEFT JOIN
     fans AS f ON b.band_id = f.band_id
 GROUP BY
     b.origin
