@@ -1,0 +1,2 @@
+- 0-uniq_users.sql - a SQL script that creates a table users
+- 
