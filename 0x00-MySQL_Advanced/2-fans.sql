@@ -2,7 +2,7 @@
 -- Query to rank country origins by the number of non-unique fans
 
 SELECT origin,
-    COUNT(DISTINCT fans) AS nb_fans
+    SUM(fans) AS nb_fans
 FROM
     metal_bands
 GROUP BY
