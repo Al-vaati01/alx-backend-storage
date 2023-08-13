@@ -1,19 +1,15 @@
 -- Create a function SafeDiv that divides (and returns) the first by the second number or returns 0 if the second number is equal to 0.
 
+DROP FUNCTION IF EXISTS SafeDiv;
 DELIMITER $$
-
-CREATE FUNCTION SafeDiv(a INT, b INT)
-RETURNS INT
+CREATE FUNCTION SafeDiv (a INT, b INT)
+RETURNS FLOAT DETERMINISTIC
 BEGIN
-    DECLARE result INT;
+    DECLARE result FLOAT DEFAULT 0;
 
-    IF b <> 0 THEN
+    IF b != 0 THEN
         SET result = a / b;
-    ELSE
-        SET result = 0;
     END IF;
-
     RETURN result;
-END;
-
+END $$
 DELIMITER ;
