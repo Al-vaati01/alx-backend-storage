@@ -1,15 +1,15 @@
 -- a trigger to decrease item quantity after adding a new order
 
-CREATE TRIGGER decrease_item_quantity
+DROP TRIGGER IF EXISTS reduce_quantity;
+DELIMITER $$
+
+CREATE TRIGGER reduce_quantity
 AFTER INSERT ON orders
 FOR EACH ROW
 BEGIN
-    DECLARE item_id INT;
-    DECLARE quantity_ordered INT;
-
-    SELECT NEW.item_id, NEW.quantity INTO item_id, quantity_ordered;
-
     UPDATE items
-    SET quantity = quantity - quantity_ordered
-    WHERE item_id = item_id;
-END;
+        SET quantity = quantity - NEW.quantity
+        WHERE item_id = NEW.item_id;
+END $$
+
+DELIMITER ;
