@@ -1,9 +1,6 @@
 -- Task: Rank country origins of bands by the number of non-unique fans
-
--- Connect to the database
-USE metal_bands;
-
 -- Query to rank country origins by the number of non-unique fans
+
 SELECT
     origin,
     SUM(nb_fans) AS nb_fans
